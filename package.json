@@ -1,0 +1,25 @@
+{
+  "name": "eagle-lingua",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Eaglelingua Translation Services — corporate website (React + Vite)",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/fetch-assets.mjs",
+    "assets": "node scripts/fetch-assets.mjs",
+    "dev": "vite",
+    "build": "vite build && node scripts/sitemap.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}
