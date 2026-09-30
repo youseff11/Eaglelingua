@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { COMPANY, whatsappLink } from '../data/company.js';
 import { SERVICES } from '../data/services.js';
 import { useI18n } from '../lib/i18n.jsx';
-import { Link } from '../lib/router.jsx';
+import { Link, useRouter } from '../lib/router.jsx';
 import { Logo } from './Header.jsx';
 import Icon from './Icon.jsx';
 import { ButtonLink, Reveal } from './ui.jsx';
@@ -121,18 +121,23 @@ export function Footer() {
 
 export function FloatingActions() {
   const { t } = useI18n();
+  const { path } = useRouter();
   const [show, setShow] = useState(false);
+  const [waHidden, setWaHidden] = useState(false);
   useEffect(() => {
     const bar = document.querySelector('.progress-bar');
     const on = () => {
       const h = document.documentElement.scrollHeight - window.innerHeight;
       if (bar) bar.style.transform = `scaleX(${h > 0 ? window.scrollY / h : 0})`;
       setShow(window.scrollY > 700);
+      // On phones keep the hero's call-to-action clear: reveal WhatsApp after a short scroll.
+      setWaHidden(window.innerWidth <= 760 && window.scrollY < 420 && window.location.pathname === '/');
     };
     on();
     window.addEventListener('scroll', on, { passive: true });
-    return () => window.removeEventListener('scroll', on);
-  }, []);
+    window.addEventListener('resize', on);
+    return () => { window.removeEventListener('scroll', on); window.removeEventListener('resize', on); };
+  }, [path]);
   return (
     <>
       <div className="progress-bar" aria-hidden="true" />
@@ -140,7 +145,7 @@ export function FloatingActions() {
         <button className={`fab fab-top ${show ? 'show' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label={t('common.backToTop')}>
           <Icon name="arrowUp" size={20} />
         </button>
-        <a className="fab fab-wa" href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label={t('common.whatsapp')}>
+        <a className={`fab fab-wa ${waHidden ? 'hide' : ''}`} href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label={t('common.whatsapp')}>
           <Icon name="whatsapp" size={28} />
         </a>
       </div>
