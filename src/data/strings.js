@@ -295,8 +295,8 @@ export const STRINGS = {
       { en: 'Once approved, our specialists start right away.', ar: 'بمجرد الموافقة يبدأ متخصصونا العمل فورًا.' },
     ],
     filesNote: {
-      en: 'Have files? Send them on WhatsApp or to info@eagle-lingua.com for the most accurate quote.',
-      ar: 'لديك ملفات؟ أرسلها على واتساب أو إلى info@eagle-lingua.com للحصول على أدق عرض سعر.',
+      en: 'Have files? Send them on WhatsApp or to info@eaglelingua.com for the most accurate quote.',
+      ar: 'لديك ملفات؟ أرسلها على واتساب أو إلى info@eaglelingua.com للحصول على أدق عرض سعر.',
     },
   },
 

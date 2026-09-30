@@ -3,7 +3,7 @@ export const COMPANY = {
   name: { en: 'Eaglelingua Translation Services', ar: 'إيجل لينجوا لخدمات الترجمة' },
   short: { en: 'Eaglelingua', ar: 'إيجل لينجوا' },
   slogan: { en: 'Talk to the World', ar: 'تحدَّث إلى العالم' },
-  email: 'info@eagle-lingua.com',
+  email: 'info@eaglelingua.com',
   whatsapp: '201501532325', // international format, no "+"
   phones: [
     { label: { en: 'WhatsApp & Calls', ar: 'واتساب ومكالمات' }, display: '+20 150 153 2325', tel: '+201501532325' },

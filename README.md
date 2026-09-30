@@ -19,7 +19,7 @@ npm run build    # نسخة الرفع في فولدر dist + sitemap.xml
 المشروع جاهز لـ Vercel (`vercel.json` فيه إعدادات Vite والـ rewrites والـ caching).
 
 **مهم قبل الرفع:** شغّل `npm install` مرة على جهازك عشان الصور تتحمل في `public/images`، وارفعها مع المشروع.
-لما الدومين `eagle-lingua.com` يتنقل على Vercel، الموقع القديم هيقفل والصور مش هتتحمل منه تاني.
+لما الدومين `eaglelingua.com` يتنقل على Vercel، الموقع القديم هيقفل والصور مش هتتحمل منه تاني.
 
 **الطريقة 1 — GitHub (المفضّلة):**
 ```bash
@@ -39,13 +39,13 @@ vercel          # أول مرة: اربط المشروع
 vercel --prod   # رفع نسخة الإنتاج
 ```
 
-**ربط الدومين:** Project → Settings → Domains → ضيف `eagle-lingua.com` و`www.eagle-lingua.com`، وعدّل الـ DNS عند شركة الدومين زي ما Vercel يقولك.
+**ربط الدومين:** Project → Settings → Domains → ضيف `eaglelingua.com` و`www.eaglelingua.com`، وعدّل الـ DNS عند شركة الدومين زي ما Vercel يقولك.
 
 **متغيرات اختيارية** (Project → Settings → Environment Variables):
 | المتغير | الاستخدام |
 |---|---|
 | `VITE_FORM_ENDPOINT` | رابط Formspree عشان النماذج توصل على الإيميل |
-| `SITE_URL` | الدومين النهائي للـ sitemap (الافتراضي `https://eagle-lingua.com`) |
+| `SITE_URL` | الدومين النهائي للـ sitemap (الافتراضي `https://www.eaglelingua.com`) |
 
 > ملفات `.htaccess` و`_redirects` موجودة كمان لو حبيت ترفع على cPanel أو Netlify بعدين.
 

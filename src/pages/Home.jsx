@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { PostCard, ServiceCard, TestimonialSlider } from '../components/blocks.jsx';
 import { CtaBand } from '../components/Footer.jsx';
 import Icon from '../components/Icon.jsx';
-import { ButtonLink, Img, Orbit, Reveal, SectionHead, useMeta } from '../components/ui.jsx';
+import { ButtonLink, Img, Reveal, SectionHead, useMeta } from '../components/ui.jsx';
 import { COMPANY, whatsappLink } from '../data/company.js';
 import { POSTS } from '../data/posts/index.js';
 import { SERVICES } from '../data/services.js';
@@ -15,9 +15,22 @@ function Hero() {
   const { t } = useI18n();
   const stats = t('stats');
   return (
-    <section className="hero">
-      <div className="hero-media"><Img file="hero.jpg" alt="" eager fetchPriority="high" /></div>
-      <Orbit />
+    <section className="hero hero-home">
+      <div className="hero-media">
+        <picture>
+          <source media="(max-width: 760px)" srcSet="/images/hero-home-mobile.webp" type="image/webp" />
+          <source media="(max-width: 760px)" srcSet="/images/hero-home-mobile.jpg" />
+          <source srcSet="/images/hero-home.webp" type="image/webp" />
+          <img
+            src="/images/hero-home.jpg"
+            alt={t({ en: 'Translation desk with language books and a globe', ar: 'مكتب ترجمة عليه كتب لغات وكرة أرضية' })}
+            width="1151"
+            height="941"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+      </div>
       <div className="container">
         <div className="hero-content">
           <span className="eyebrow hero-eyebrow">{t('home.heroEyebrow')}</span>

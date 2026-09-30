@@ -34,12 +34,23 @@ const P = {
   calendar: <><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" /><path d="M8 3v4M16 3v4M3.5 10h17" /></>,
   book: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z" /><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5" /></>,
   send: <path d="m22 2-7 20-4-9-9-4zM22 2 11 13" />,
-  whatsapp: <path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 5 5.1-1.3A9.8 9.8 0 1 0 12 2.2zm0 17.9a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-3-.2-.3A8.1 8.1 0 1 1 12 20.1zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2l-.4-.2z" fill="currentColor" stroke="none" />,
   facebook: <path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.2H8v3.3h2.6V22H14v-10.2h2.6l.4-3.3z" fill="currentColor" stroke="none" />,
   instagram: <><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></>,
 };
 
+// Brand icons rendered with Font Awesome (loaded from cdnjs in index.html).
+const FA_BRANDS = { whatsapp: 'fa-brands fa-whatsapp' };
+
 export default function Icon({ name, size = 22, className = '', strokeWidth = 1.6, ...rest }) {
+  if (FA_BRANDS[name]) {
+    return (
+      <i
+        className={`icon fa-icon ${FA_BRANDS[name]} ${className}`}
+        style={{ fontSize: size, width: size, height: size, lineHeight: `${size}px`, textAlign: 'center' }}
+        aria-hidden="true"
+      />
+    );
+  }
   return (
     <svg
       className={`icon ${className}`}
