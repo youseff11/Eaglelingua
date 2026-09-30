@@ -117,7 +117,7 @@ export function Post({ post: p }) {
               <h4>{t('blogPage.needHelp')}</h4>
               <p>{t('blogPage.needHelpText')}</p>
               <div style={{ display: 'grid', gap: 10, marginTop: 20 }}>
-                <ButtonLink to="/request-a-quote" className="btn-block">{t('common.requestQuote')}</ButtonLink>
+                <ButtonLink to="/contact-us" className="btn-block">{t('common.contactUs')}</ButtonLink>
                 <a className="btn btn-ghost btn-block" href={whatsappLink(`About: ${p.title.en}`)} target="_blank" rel="noopener noreferrer"><Icon name="whatsapp" size={18} /> {t('common.whatsapp')}</a>
               </div>
             </div>

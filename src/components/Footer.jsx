@@ -20,7 +20,7 @@ export function CtaBand() {
             <p>{t('home.ctaText')}</p>
           </div>
           <div className="cta-actions">
-            <ButtonLink to="/request-a-quote">{t('common.requestQuote')}</ButtonLink>
+            <ButtonLink to="/contact-us">{t('common.contactUs')}</ButtonLink>
             <a className="btn btn-ghost" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
               <Icon name="whatsapp" size={18} /> {t('common.whatsapp')}
             </a>
@@ -33,40 +33,11 @@ export function CtaBand() {
 
 export function Footer() {
   const { t } = useI18n();
-  const [done, setDone] = useState(false);
   const year = new Date().getFullYear();
-
-  const subscribe = (e) => {
-    e.preventDefault();
-    const email = new FormData(e.currentTarget).get('email');
-    if (!email) return;
-    if (COMPANY.formEndpoint) {
-      fetch(COMPANY.formEndpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ email, subject: 'Newsletter subscription' }) }).catch(() => {});
-    } else {
-      window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent('Newsletter subscription')}&body=${encodeURIComponent('Please subscribe: ' + email)}`;
-    }
-    setDone(true);
-  };
 
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-news">
-          <div>
-            <p className="kicker">{t('footer.newsletterText')}</p>
-            <h3>{t('footer.newsletterTitle')}</h3>
-          </div>
-          {done ? (
-            <p style={{ color: 'var(--gold-300)', fontWeight: 700 }}>{t('footer.newsletterDone')}</p>
-          ) : (
-            <form className="news-form" onSubmit={subscribe}>
-              <label htmlFor="news-email" className="sr-only">{t('form.email')}</label>
-              <input id="news-email" name="email" type="email" required placeholder={t('footer.newsletterPlaceholder')} />
-              <button className="btn btn-gold btn-sm" type="submit">{t('footer.newsletterCta')} <Icon name="send" size={16} /></button>
-            </form>
-          )}
-        </div>
-
         <div className="footer-main">
           <div>
             <Link to="/" className="brand" style={{ marginBottom: 20 }}><Logo height={48} /></Link>
@@ -87,7 +58,6 @@ export function Footer() {
               <Link to="/faq">{t('nav.faq')}</Link>
               <Link to="/blog">{t('nav.blog')}</Link>
               <Link to="/contact-us">{t('nav.contact')}</Link>
-              <Link to="/request-a-quote">{t('nav.quote')}</Link>
             </div>
           </div>
           <div>

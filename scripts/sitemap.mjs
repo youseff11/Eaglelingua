@@ -3,8 +3,8 @@ import { writeFile } from 'node:fs/promises';
 import { SERVICES } from '../src/data/services.js';
 import { POSTS } from '../src/data/posts/index.js';
 
-const SITE = process.env.SITE_URL || 'https://eagle-lingua.com';
-const pages = ['', '/about-us', '/our-services', '/faq', '/testimonials', '/blog', '/contact-us', '/request-a-quote'];
+const SITE = process.env.SITE_URL || 'https://www.eaglelingua.com';
+const pages = ['', '/about-us', '/our-services', '/faq', '/testimonials', '/blog', '/contact-us'];
 const urls = [
   ...pages.map((p) => ({ loc: SITE + p, pr: p === '' ? '1.0' : '0.8' })),
   ...SERVICES.map((s) => ({ loc: `${SITE}/${s.slug}`, pr: '0.9' })),

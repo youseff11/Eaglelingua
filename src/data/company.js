@@ -20,9 +20,6 @@ export const COMPANY = {
     facebook: 'https://www.facebook.com/share/18JSbs1ZiG/',
     instagram: 'https://www.instagram.com/eaglelinguatrans',
   },
-  // Optional: set VITE_FORM_ENDPOINT in a .env file (e.g. a Formspree / Web3Forms endpoint)
-  // to receive form submissions by email. Without it, forms open WhatsApp with the message pre-filled.
-  formEndpoint: import.meta.env.VITE_FORM_ENDPOINT || '',
 };
 
 export const whatsappLink = (text = '') =>

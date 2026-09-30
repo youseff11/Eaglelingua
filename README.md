@@ -44,15 +44,13 @@ vercel --prod   # رفع نسخة الإنتاج
 **متغيرات اختيارية** (Project → Settings → Environment Variables):
 | المتغير | الاستخدام |
 |---|---|
-| `VITE_FORM_ENDPOINT` | رابط Formspree عشان النماذج توصل على الإيميل |
 | `SITE_URL` | الدومين النهائي للـ sitemap (الافتراضي `https://www.eaglelingua.com`) |
 
 > ملفات `.htaccess` و`_redirects` موجودة كمان لو حبيت ترفع على cPanel أو Netlify بعدين.
 
-## النماذج (Forms)
+## التواصل
 
-من غير أي إعداد: نموذج التواصل وطلب عرض السعر بيفتحوا واتساب والرسالة جاهزة.
-عشان توصلك على الإيميل: اعمل فورم مجاني على formspree.io، انسخ ملف `.env.example` باسم `.env` وحط الـ endpoint في `VITE_FORM_ENDPOINT`.
+الموقع تعريفي ومن غير باك إند، فمفيش أي نماذج بتسجّل بيانات. كل أزرار التواصل بتفتح واتساب أو الاتصال أو الإيميل مباشرةً (الأرقام والإيميل في `src/data/company.js`).
 
 ## تعديل المحتوى
 
@@ -73,7 +71,7 @@ vercel --prod   # رفع نسخة الإنتاج
 src/
   lib/        router (dependency-free) + i18n (EN/AR, RTL)
   components/ Header, Footer, cards, forms, icons, UI helpers
-  pages/      Home, About, Services, ServiceDetail, FAQ, Testimonials, Blog/Post, Contact/Quote
+  pages/      Home, About, Services, ServiceDetail, FAQ, Testimonials, Blog/Post, Contact
   data/       all content
 scripts/      fetch-assets.mjs (images) · sitemap.mjs
 ```

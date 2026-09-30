@@ -60,7 +60,7 @@ export default function ServiceDetail({ service: s }) {
               <h4>{t('serviceDetail.ctaTitle')}</h4>
               <p>{t('serviceDetail.ctaText')}</p>
               <div style={{ display: 'grid', gap: 10, marginTop: 20 }}>
-                <ButtonLink to={`/request-a-quote?service=${s.slug}`} className="btn-block">{t('common.requestQuote')}</ButtonLink>
+                <ButtonLink to="/contact-us" className="btn-block">{t('common.contactUs')}</ButtonLink>
                 <a className="btn btn-ghost btn-block" href={whatsappLink(`Hello, I need: ${s.title.en}`)} target="_blank" rel="noopener noreferrer">
                   <Icon name="whatsapp" size={18} /> {t('common.whatsapp')}
                 </a>

@@ -41,10 +41,6 @@ function Hero() {
           <p className="hero-lead">{t('home.heroLead')}</p>
           <div className="hero-actions">
             <ButtonLink to="/contact-us">{t('common.getStarted')}</ButtonLink>
-            <ButtonLink to="/request-a-quote" variant="ghost" icon={null}>{t('common.requestQuote')}</ButtonLink>
-            <a className="btn btn-ghost" href={whatsappLink('Hello, I would like to book an interpreter / hold a conference.')} target="_blank" rel="noopener noreferrer">
-              <Icon name="mic" size={18} /> {t('common.holdConference')}
-            </a>
           </div>
           <div className="hero-badge"><span className="dot" /> {t('home.heroBadge')}</div>
         </div>

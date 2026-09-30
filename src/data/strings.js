@@ -8,7 +8,6 @@ export const STRINGS = {
     testimonials: { en: 'Testimonials', ar: 'آراء العملاء' },
     blog: { en: 'Blog', ar: 'المدونة' },
     contact: { en: 'Contact', ar: 'تواصل معنا' },
-    quote: { en: 'Request a Quote', ar: 'اطلب عرض سعر' },
     menu: { en: 'Menu', ar: 'القائمة' },
     close: { en: 'Close', ar: 'إغلاق' },
     langSwitch: { en: 'العربية', ar: 'English' },
@@ -21,8 +20,6 @@ export const STRINGS = {
 
   common: {
     getStarted: { en: 'Get Started', ar: 'ابدأ الآن' },
-    requestQuote: { en: 'Request a Quote', ar: 'اطلب عرض سعر' },
-    holdConference: { en: 'Book an Interpreter', ar: 'احجز مترجمًا فوريًا' },
     learnMore: { en: 'Learn more', ar: 'اعرف المزيد' },
     contactUs: { en: 'Contact Us', ar: 'تواصل معنا' },
     readMore: { en: 'Read article', ar: 'اقرأ المقال' },
@@ -31,6 +28,7 @@ export const STRINGS = {
     viewAllPosts: { en: 'All articles', ar: 'جميع المقالات' },
     viewAllReviews: { en: 'All testimonials', ar: 'كل آراء العملاء' },
     whatsapp: { en: 'Chat on WhatsApp', ar: 'راسلنا على واتساب' },
+    whatsappShort: { en: 'WhatsApp', ar: 'واتساب' },
     call: { en: 'Call us', ar: 'اتصل بنا' },
     email: { en: 'Email us', ar: 'راسلنا بالبريد' },
     minRead: { en: 'min read', ar: 'دقائق قراءة' },
@@ -277,55 +275,17 @@ export const STRINGS = {
     email: { en: 'Email', ar: 'البريد الإلكتروني' },
     hours: { en: 'Working hours', ar: 'ساعات العمل' },
     hoursValue: { en: 'Online 24 hours, 7 days a week', ar: 'متاحون إلكترونيًا 24 ساعة، 7 أيام في الأسبوع' },
-    formTitle: { en: 'Send us a message', ar: 'أرسل لنا رسالة' },
+    quickEyebrow: { en: 'Direct contact', ar: 'تواصل مباشر' },
+    quickTitle: { en: 'Talk to our team right now', ar: 'تحدّث مع فريقنا الآن' },
+    quickText: {
+      en: 'Send your documents on WhatsApp or email and get a reply with the price and delivery time — no forms, no waiting.',
+      ar: 'أرسل مستنداتك عبر واتساب أو البريد الإلكتروني وستصلك الإجابة بالسعر وموعد التسليم — دون نماذج أو انتظار.',
+    },
     directions: { en: 'Get directions', ar: 'احصل على الاتجاهات' },
     follow: { en: 'Follow us', ar: 'تابعنا' },
   },
 
-  quote: {
-    title: { en: 'Request a Quote', ar: 'اطلب عرض سعر' },
-    lead: {
-      en: 'Tell us about your project and receive a tailored price with an estimated delivery time.',
-      ar: 'أخبرنا عن مشروعك واحصل على سعر مخصص مع موعد التسليم المتوقع.',
-    },
-    whyTitle: { en: 'What happens next', ar: 'ماذا يحدث بعد ذلك' },
-    steps: [
-      { en: 'We review your request and files.', ar: 'نراجع طلبك وملفاتك.' },
-      { en: 'You receive a custom quote and delivery estimate.', ar: 'تستلم عرض سعر مخصصًا وموعد تسليم تقديريًا.' },
-      { en: 'Once approved, our specialists start right away.', ar: 'بمجرد الموافقة يبدأ متخصصونا العمل فورًا.' },
-    ],
-    filesNote: {
-      en: 'Have files? Send them on WhatsApp or to info@eaglelingua.com for the most accurate quote.',
-      ar: 'لديك ملفات؟ أرسلها على واتساب أو إلى info@eaglelingua.com للحصول على أدق عرض سعر.',
-    },
-  },
 
-  form: {
-    name: { en: 'Full name', ar: 'الاسم بالكامل' },
-    email: { en: 'Email address', ar: 'البريد الإلكتروني' },
-    phone: { en: 'Phone number', ar: 'رقم الهاتف' },
-    subject: { en: 'Subject', ar: 'الموضوع' },
-    message: { en: 'Message', ar: 'الرسالة' },
-    service: { en: 'Service', ar: 'الخدمة' },
-    choose: { en: 'Choose a service', ar: 'اختر الخدمة' },
-    other: { en: 'Other / not sure', ar: 'أخرى / لست متأكدًا' },
-    from: { en: 'From language', ar: 'من لغة' },
-    to: { en: 'To language', ar: 'إلى لغة' },
-    deadline: { en: 'Preferred deadline', ar: 'الموعد المفضّل للتسليم' },
-    pages: { en: 'Pages / word count (approx.)', ar: 'عدد الصفحات / الكلمات (تقريبًا)' },
-    details: { en: 'Project details', ar: 'تفاصيل المشروع' },
-    send: { en: 'Send message', ar: 'إرسال الرسالة' },
-    sendQuote: { en: 'Request my quote', ar: 'اطلب عرض السعر' },
-    sending: { en: 'Sending…', ar: 'جارٍ الإرسال…' },
-    sentTitle: { en: 'Thank you!', ar: 'شكرًا لك!' },
-    sent: { en: 'Your message has been sent. Our team will get back to you shortly.', ar: 'تم إرسال رسالتك، وسيتواصل معك فريقنا قريبًا.' },
-    viaWhatsapp: { en: 'We opened WhatsApp with your message ready — just press send.', ar: 'فتحنا واتساب ورسالتك جاهزة — فقط اضغط إرسال.' },
-    error: { en: 'Something went wrong. Please try WhatsApp or email instead.', ar: 'حدث خطأ ما. يُرجى التواصل عبر واتساب أو البريد الإلكتروني.' },
-    required: { en: 'Required', ar: 'مطلوب' },
-    invalidEmail: { en: 'Please enter a valid email', ar: 'يُرجى إدخال بريد إلكتروني صحيح' },
-    privacy: { en: 'Your information is kept strictly confidential.', ar: 'بياناتك تُحفظ بسرية تامة.' },
-    orEmail: { en: 'or send by email', ar: 'أو أرسل بالبريد الإلكتروني' },
-  },
 
   footer: {
     about: {
@@ -335,11 +295,6 @@ export const STRINGS = {
     quickLinks: { en: 'Quick links', ar: 'روابط سريعة' },
     services: { en: 'Services', ar: 'الخدمات' },
     contact: { en: 'Contact', ar: 'التواصل' },
-    newsletterTitle: { en: 'Stay updated on all our news & offers', ar: 'تابع آخر أخبارنا وعروضنا' },
-    newsletterText: { en: 'Your language partner for certified translation services.', ar: 'شريكك اللغوي لخدمات الترجمة المعتمدة.' },
-    newsletterCta: { en: 'Subscribe', ar: 'اشترك' },
-    newsletterPlaceholder: { en: 'Your email address', ar: 'بريدك الإلكتروني' },
-    newsletterDone: { en: 'Thank you — you’re subscribed.', ar: 'شكرًا لك — تم اشتراكك.' },
     rights: { en: 'All rights reserved.', ar: 'جميع الحقوق محفوظة.' },
   },
 
@@ -349,8 +304,4 @@ export const STRINGS = {
     back: { en: 'Back to home', ar: 'العودة للرئيسية' },
   },
 
-  languages: {
-    en: ['English', 'Arabic', 'French', 'German', 'Italian', 'Spanish', 'Russian', 'Chinese', 'Turkish', 'Portuguese', 'Hindi', 'Urdu', 'Japanese', 'Korean', 'Dutch', 'Persian', 'Other'],
-    ar: ['الإنجليزية', 'العربية', 'الفرنسية', 'الألمانية', 'الإيطالية', 'الإسبانية', 'الروسية', 'الصينية', 'التركية', 'البرتغالية', 'الهندية', 'الأردية', 'اليابانية', 'الكورية', 'الهولندية', 'الفارسية', 'أخرى'],
-  },
 };

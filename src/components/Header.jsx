@@ -5,7 +5,7 @@ import { SERVICES } from '../data/services.js';
 import { useI18n } from '../lib/i18n.jsx';
 import { Link, useRouter } from '../lib/router.jsx';
 import Icon from './Icon.jsx';
-import { useScrolled } from './ui.jsx';
+import { Orbit, useScrolled } from './ui.jsx';
 
 export function Logo({ height }) {
   const [src, setSrc] = useState(localSrc('logo.png'));
@@ -54,7 +54,8 @@ export default function Header({ solid = false }) {
   return (
     <>
       <header className={`header ${scrolled ? 'scrolled' : ''} ${solid ? 'solid' : ''}`}>
-        <div className="container header-inner">
+        <div className="container">
+        <div className="navbar-shell">
           <Link to="/" className="brand" aria-label="Eaglelingua — Home"><Logo /></Link>
 
           <nav className="nav" aria-label="Main">
@@ -97,52 +98,92 @@ export default function Header({ solid = false }) {
             <button className="lang-btn" onClick={toggle} aria-label={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}>
               <Icon name="globe" size={16} />
               <span className={`lang-label ${lang === 'ar' ? 'lang-en' : 'lang-ar'}`}>{t('nav.langSwitch')}</span>
+              <span className={`lang-code ${lang === 'ar' ? 'lang-en' : 'lang-ar'}`}>{t('nav.langSwitchShort')}</span>
             </button>
-            <Link to="/request-a-quote" className="btn btn-gold btn-sm btn-quote">{t('nav.quote')}</Link>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-gold btn-sm btn-quote">
+              <Icon name="whatsapp" size={17} /> {t('common.whatsappShort')}
+            </a>
             <button className="menu-btn" onClick={() => setOpen(true)} aria-label={t('nav.menu')} aria-expanded={open}>
-              <Icon name="menu" size={22} />
+              <span className="burger" aria-hidden="true"><i /><i /><i /></span>
             </button>
           </div>
+        </div>
         </div>
       </header>
 
       <div className={`drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
-        <div className="drawer-backdrop" onClick={() => setOpen(false)} />
-        <aside className="drawer-panel" role="dialog" aria-modal="true" aria-label={t('nav.menu')}>
+        <aside className="drawer-panel" role="dialog" aria-modal="true" aria-label={t('nav.menu')} onClick={(e) => { if (e.target.closest('a')) setOpen(false); }}>
+          <Orbit className="drawer-orbit" />
           <div className="drawer-head">
-            <Link to="/" className="brand"><Logo height={40} /></Link>
-            <button className="menu-btn" style={{ display: 'inline-flex' }} onClick={() => setOpen(false)} aria-label={t('nav.close')}>
-              <Icon name="close" size={22} />
-            </button>
+            <Link to="/" className="brand"><Logo height={38} /></Link>
+            <div className="drawer-head-actions">
+              <button className="drawer-lang" onClick={toggle} aria-label={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}>
+                <Icon name="globe" size={15} />
+                <span className={lang === 'ar' ? 'lang-en' : 'lang-ar'}>{t('nav.langSwitch')}</span>
+              </button>
+              <button className="drawer-close" onClick={() => setOpen(false)} aria-label={t('nav.close')}>
+                <Icon name="close" size={20} />
+              </button>
+            </div>
           </div>
-          <nav className="drawer-nav" aria-label="Mobile">
-            {NAV.map((n) =>
-              n.mega ? (
-                <div key={n.to}>
-                  <button className="drawer-link drawer-toggle" style={{ width: '100%' }} aria-expanded={subOpen} onClick={() => setSubOpen((v) => !v)}>
-                    {t(n.key)} <Icon name="chevronDown" size={20} />
-                  </button>
-                  <div className={`drawer-sub ${subOpen ? 'open' : ''}`}>
-                    <div>
-                      <Link to="/our-services" className="drawer-sub-link" style={{ fontWeight: 700, color: 'var(--gold-300)' }}>{t('nav.allServices')}</Link>
-                      <div className="drawer-sub-title">{t('nav.coreServices')}</div>
-                      {core.map((s) => <Link key={s.slug} to={`/${s.slug}`}><Icon name={s.icon} size={16} />{t(s.title)}</Link>)}
-                      <div className="drawer-sub-title">{t('nav.specializedServices')}</div>
-                      {specialized.map((s) => <Link key={s.slug} to={`/${s.slug}`}><Icon name={s.icon} size={16} />{t(s.title)}</Link>)}
+
+          <div className="drawer-body">
+            <span className="drawer-kicker">{t('nav.menu')}</span>
+            <nav className="drawer-nav" aria-label="Mobile">
+              {NAV.map((n, i) =>
+                n.mega ? (
+                  <div key={n.to} className="drawer-item" style={{ '--i': i }}>
+                    <button className="drawer-link drawer-toggle" aria-expanded={subOpen} onClick={() => setSubOpen((v) => !v)}>
+                      <span className="dl-num">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="dl-label">{t(n.key)}</span>
+                      <span className="dl-plus"><Icon name="plus" size={16} /></span>
+                    </button>
+                    <div className={`drawer-sub ${subOpen ? 'open' : ''}`}>
+                      <div>
+                        <div className="drawer-sub-inner">
+                          <div className="drawer-sub-title">{t('nav.specializedServices')}</div>
+                          <div className="drawer-sub-grid">
+                            {specialized.map((s) => (
+                              <Link key={s.slug} to={`/${s.slug}`} className="drawer-chip"><span className="chip-ic"><Icon name={s.icon} size={16} /></span>{t(s.title)}</Link>
+                            ))}
+                          </div>
+                          <div className="drawer-sub-title">{t('nav.coreServices')}</div>
+                          <div className="drawer-sub-grid">
+                            {core.map((s) => (
+                              <Link key={s.slug} to={`/${s.slug}`} className="drawer-chip"><span className="chip-ic"><Icon name={s.icon} size={16} /></span>{t(s.title)}</Link>
+                            ))}
+                          </div>
+                          <Link to="/our-services" className="link-arrow drawer-all">{t('nav.allServices')} <Icon name="arrow" size={16} /></Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <Link key={n.to} to={n.to} className="drawer-link">{t(n.key)}</Link>
-              )
-            )}
-          </nav>
+                ) : (
+                  <div key={n.to} className="drawer-item" style={{ '--i': i }}>
+                    <Link to={n.to} className="drawer-link">
+                      <span className="dl-num">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="dl-label">{t(n.key)}</span>
+                      <Icon name="arrow" size={18} className="dl-arrow" />
+                    </Link>
+                  </div>
+                )
+              )}
+            </nav>
+          </div>
+
           <div className="drawer-foot">
-            <Link to="/request-a-quote" className="btn btn-gold btn-block">{t('nav.quote')}</Link>
-            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-block"><Icon name="whatsapp" size={18} /> {t('common.whatsapp')}</a>
-            <button className="btn btn-ghost btn-block" onClick={toggle}><Icon name="globe" size={18} /> {t('nav.langSwitch')}</button>
-            <div className="drawer-contact">
-              <a href={`mailto:${COMPANY.email}`}><Icon name="mail" size={16} /> {COMPANY.email}</a>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn btn-gold btn-block"><Icon name="whatsapp" size={19} /> {t('common.whatsapp')}</a>
+            <div className="drawer-quick">
+              <a href={`tel:${COMPANY.phones[0].tel}`}><Icon name="phone" size={17} /><span>{t('common.call')}</span></a>
+              <a href={`mailto:${COMPANY.email}`}><Icon name="mail" size={17} /><span>{t('common.email')}</span></a>
+            </div>
+            <div className="drawer-bottom">
+              <div className="drawer-socials">
+                <a href={COMPANY.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Icon name="facebook" size={16} /></a>
+                <a href={COMPANY.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" size={16} /></a>
+                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><Icon name="whatsapp" size={17} /></a>
+              </div>
+              <span className="drawer-slogan">“{t(COMPANY.slogan)}”</span>
             </div>
           </div>
         </aside>

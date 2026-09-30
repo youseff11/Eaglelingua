@@ -7,7 +7,7 @@ import { useI18n } from './lib/i18n.jsx';
 import { matchPath, useRouter } from './lib/router.jsx';
 import About from './pages/About.jsx';
 import { Blog, Post } from './pages/Blog.jsx';
-import { Contact, Quote } from './pages/Contact.jsx';
+import { Contact } from './pages/Contact.jsx';
 import Faq from './pages/Faq.jsx';
 import Home from './pages/Home.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
@@ -23,7 +23,7 @@ const ROUTES = {
   '/testimonials': Testimonials,
   '/blog': Blog,
   '/contact-us': Contact,
-  '/request-a-quote': Quote,
+  '/request-a-quote': Contact, // old URL from the previous site
 };
 
 function NotFound() {
@@ -52,7 +52,7 @@ function resolve(path) {
     if (post) return { Page: Post, props: { post } };
   }
   // Legacy aliases
-  const legacy = { '/services': '/our-services', '/about': '/about-us', '/contact': '/contact-us', '/quote': '/request-a-quote' };
+  const legacy = { '/services': '/our-services', '/about': '/about-us', '/contact': '/contact-us', '/quote': '/contact-us' };
   if (legacy[path]) return { Page: ROUTES[legacy[path]] };
   return { Page: NotFound, notFound: true };
 }
